@@ -19,3 +19,5 @@ var app = builder.Build();
 app.MapCarter();
 
 app.Run();
+// Add For Test
+public partial class Program { }
