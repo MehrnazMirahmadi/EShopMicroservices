@@ -1,5 +1,4 @@
-﻿using Catalog.API.Exeptions;
-using Catalog.API.Models;
+﻿using Catalog.API.Models;
 using Catalog.API.Products.GetProductById;
 using FluentAssertions;
 using MediatR;
@@ -53,7 +52,7 @@ public class GetProductByIdEndpointTests : IClassFixture<WebApplicationFactory<P
         responseData!.Product.Id.Should().Be(expectedProduct.Id);
         responseData.Product.Name.Should().Be(expectedProduct.Name);
     }
-   
+
     [Fact]
     public async Task Should_Return_400_When_Id_Is_Invalid()
     {
