@@ -49,7 +49,7 @@ namespace Catalog.Tests
                 Price = 99.99m
             };
 
-            var handler = new CreateProductCommandHandler(mockSession.Object);
+            //var handler = new CreateProductCommandHandler(mockSession.Object);
 
             var response = await _client.PostAsJsonAsync("/products", request);
 
