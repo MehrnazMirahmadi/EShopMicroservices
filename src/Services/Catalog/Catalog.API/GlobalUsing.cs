@@ -6,3 +6,5 @@ global using BuildingBlocks.CQRS;
 global using Catalog.API.Models;
 global using Catalog.API.Exeptions;
 global using FluentValidation;
+global using BuildingBlocks.Behaviors;
+global using BuildingBlocks.Exceptions.Handler;

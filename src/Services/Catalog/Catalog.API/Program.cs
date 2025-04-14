@@ -1,8 +1,3 @@
-using BuildingBlocks.Behaviors;
-using Microsoft.AspNetCore.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
-using OpenTelemetry.Trace;
-
 var builder = WebApplication.CreateBuilder(args);
 // Add services to container
 
@@ -23,37 +18,15 @@ builder.Services.AddMarten(opts =>
 
 }).UseLightweightSessions();
 
-
+builder.Services.AddExceptionHandler<CustomExceptionHandler>();
 
 var app = builder.Build();
 
 // Configure the HTTP request pipline
 app.MapCarter();
 
-app.UseExceptionHandler(exceptionHandlerApp =>
+app.UseExceptionHandler(options =>
 {
-    exceptionHandlerApp.Run(async context =>
-{
-
-    var exeption = context.Features.Get<IExceptionHandlerFeature>()?.Error;
-    if (exeption is null)
-    {
-        return;
-    }
-    var problemDetails = new ProblemDetails
-    {
-        Title = exeption.Message,
-        Status = StatusCodes.Status500InternalServerError,
-        Detail = exeption.StackTrace
-    };
-    var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
-    logger.LogError(exeption, exeption.Message);
-
-    context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-    context.Response.ContentType = "application/problem+json";
-
-    await context.Response.WriteAsJsonAsync(problemDetails);
-});
 
 });
 
