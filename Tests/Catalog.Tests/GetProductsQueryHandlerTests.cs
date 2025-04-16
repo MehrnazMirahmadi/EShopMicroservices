@@ -1,5 +1,4 @@
-﻿using Xunit;
-using Catalog.API.Models;
+﻿using Catalog.API.Models;
 using Catalog.API.Products.GetProducts;
 using Marten;
 using Shouldly;

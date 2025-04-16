@@ -1,6 +1,5 @@
 ﻿using Catalog.API.Models;
 using Catalog.API.Products.GetProductById;
-using EmptyFiles;
 using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc.Testing;

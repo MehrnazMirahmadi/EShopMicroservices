@@ -2,13 +2,12 @@
 using Catalog.API.Models;
 using Catalog.API.Products.GetProductById;
 using Marten;
-using Microsoft.Extensions.Logging;
 using Moq;
 
 public class GetProductByIdQueryHandlerTests
 {
     private readonly Mock<IDocumentSession> _sessionMock = new();
-    
+
 
     [Fact]
     public async Task Handle_ProductExists_ReturnsResult()
