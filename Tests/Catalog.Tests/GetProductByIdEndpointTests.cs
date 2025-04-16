@@ -1,5 +1,6 @@
 ﻿using Catalog.API.Models;
 using Catalog.API.Products.GetProductById;
+using EmptyFiles;
 using FluentAssertions;
 using MediatR;
 using Microsoft.AspNetCore.Mvc.Testing;
@@ -26,7 +27,6 @@ public class GetProductByIdEndpointTests : IClassFixture<WebApplicationFactory<P
         {
             Id = productId,
             Name = "Test Product"
-            // سایر فیلدها در صورت نیاز
         };
 
         var senderMock = new Mock<ISender>();
@@ -54,7 +54,7 @@ public class GetProductByIdEndpointTests : IClassFixture<WebApplicationFactory<P
     }
 
     [Fact]
-    public async Task Should_Return_400_When_Id_Is_Invalid()
+    public async Task Should_Return_404_When_Id_Is_Not_Guid()
     {
         // Arrange
         var client = _factory.CreateClient();
@@ -63,7 +63,8 @@ public class GetProductByIdEndpointTests : IClassFixture<WebApplicationFactory<P
         var response = await client.GetAsync($"/products/not-a-valid-guid");
 
         // Assert
-        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        response.StatusCode.Should().Be(HttpStatusCode.NotFound);
     }
+
 
 }

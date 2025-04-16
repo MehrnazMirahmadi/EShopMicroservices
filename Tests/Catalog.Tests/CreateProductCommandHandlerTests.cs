@@ -20,20 +20,20 @@ public class CreateProductCommandHandlerTests
             .Setup(s => s.Store(It.IsAny<Product[]>()))
             .Callback<Product[]>((products) =>
             {
-                storedProduct = products.FirstOrDefault();
+                storedProduct = products.FirstOrDefault(); // دریافت اولین محصول از آرایه
                 if (storedProduct != null)
                 {
                     storedProduct.Id = Guid.NewGuid(); // مقداردهی به Id برای محصول
                 }
             });
 
-
         // Mock SaveChangesAsync (do nothing)
         fakeSession
             .Setup(s => s.SaveChangesAsync(It.IsAny<CancellationToken>()))
             .Returns(Task.CompletedTask);
 
-      //  var handler = new CreateProductCommandHandler(fakeSession.Object);
+        // Create handler
+        var handler = new CreateProductCommandHandler(fakeSession.Object);
 
         var command = new CreateProductCommand(
             Name: "Test Product",
@@ -42,9 +42,9 @@ public class CreateProductCommandHandlerTests
             ImageFile: "test.jpg",
             Price: 99.99m
         );
-        
+
         // Act
-       //var result = await handler.Handle(command, CancellationToken.None);
+        var result = await handler.Handle(command, CancellationToken.None);
 
         // Assert
         storedProduct.ShouldNotBeNull();
@@ -53,10 +53,10 @@ public class CreateProductCommandHandlerTests
         storedProduct.Category.ShouldContain("Category1");
         storedProduct.Description.ShouldBe("Test Description");
 
-       // result.Id.ShouldNotBe(Guid.Empty);
+        result.Id.ShouldNotBe(Guid.Empty);
 
         // Ensure that session methods were called
-        fakeSession.Verify(s => s.Store(It.IsAny<Product>()), Times.Once);
+        fakeSession.Verify(s => s.Store(It.IsAny<Product[]>()), Times.Once);
         fakeSession.Verify(s => s.SaveChangesAsync(It.IsAny<CancellationToken>()), Times.Once);
     }
 }

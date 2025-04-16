@@ -8,7 +8,7 @@ using Moq;
 public class GetProductByIdQueryHandlerTests
 {
     private readonly Mock<IDocumentSession> _sessionMock = new();
-    //private readonly Mock<ILogger<GetProductByIdQueryHandler>> _loggerMock = new();
+    
 
     [Fact]
     public async Task Handle_ProductExists_ReturnsResult()
@@ -19,14 +19,14 @@ public class GetProductByIdQueryHandlerTests
         _sessionMock.Setup(s => s.LoadAsync<Product>(productId, It.IsAny<CancellationToken>()))
                     .ReturnsAsync(expectedProduct);
 
-       // var handler = new GetProductByIdQueryHandler(_sessionMock.Object, _loggerMock.Object);
+        var handler = new GetProductByIdQueryHandler(_sessionMock.Object);
 
         // Act
-       // var result = await handler.Handle(new GetProductByIdQuery(productId), CancellationToken.None);
+        var result = await handler.Handle(new GetProductByIdQuery(productId), CancellationToken.None);
 
         // Assert
-        //Assert.NotNull(result);
-        //Assert.Equal(expectedProduct, result.Product);
+        Assert.NotNull(result);
+        Assert.Equal(expectedProduct, result.Product);
     }
 
     [Fact]
@@ -37,10 +37,10 @@ public class GetProductByIdQueryHandlerTests
         _sessionMock.Setup(s => s.LoadAsync<Product>(productId, It.IsAny<CancellationToken>()))
                     .ReturnsAsync((Product?)null);
 
-    //    var handler = new GetProductByIdQueryHandler(_sessionMock.Object, _loggerMock.Object);
+        var handler = new GetProductByIdQueryHandler(_sessionMock.Object);
 
         // Act + Assert
-      //  await Assert.ThrowsAsync<ProductNotFoundExeption>(() =>
-          //  handler.Handle(new GetProductByIdQuery(productId), CancellationToken.None));
+        await Assert.ThrowsAsync<ProductNotFoundExeption>(() =>
+        handler.Handle(new GetProductByIdQuery(productId), CancellationToken.None));
     }
 }
