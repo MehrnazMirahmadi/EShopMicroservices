@@ -13,14 +13,13 @@ public class StoreBasketCommandValidator : AbstractValidator<StoreBasketCommand>
             .WithMessage("UserName is required");
     }
 }
-public class StoreBasketCommandHandler
+public class StoreBasketCommandHandler(IBasketRepository repository)
     : ICommandHandler<StoreBasketCommand, StoreBasketResult>
 {
     public async Task<StoreBasketResult> Handle(StoreBasketCommand command, CancellationToken cancellationToken)
     {
         ShoppingCart cart = command.Cart;
-        // Todo : store basket in database (use Marten upsert - if exist = update , if not exist insert)
-        // Todo : udpate cache
-        return new StoreBasketResult("swn");
+        await repository.StoreBasket(cart,cancellationToken);
+        return new StoreBasketResult(command.Cart.UserName);
     }
 }
