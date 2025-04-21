@@ -1,9 +1,4 @@
-﻿using Catalog.API.Models;
-using Catalog.API.Products.GetProducts;
-using Marten;
-using Shouldly;
-
-namespace Catalog.Tests;
+﻿namespace Catalog.Tests;
 
 public class GetProductsQueryHandlerTests
 {

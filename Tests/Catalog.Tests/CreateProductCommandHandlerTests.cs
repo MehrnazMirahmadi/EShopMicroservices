@@ -1,10 +1,4 @@
-﻿using Catalog.API.Models;
-using Catalog.API.Products.CreateProduct;
-using Marten;
-using Moq;
-using Shouldly;
-
-namespace Catalog.Tests;
+﻿namespace Catalog.Tests;
 
 public class CreateProductCommandHandlerTests
 {

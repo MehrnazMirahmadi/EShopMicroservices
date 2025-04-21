@@ -1,10 +1,4 @@
-﻿using Catalog.API.Exeptions;
-using Catalog.API.Models;
-using Catalog.API.Products.DeleteProduct;
-using Marten;
-using Moq;
-
-namespace Catalog.Tests;
+﻿namespace Catalog.Tests;
 
 public class DeleteProductCommandHandlerTests
 {

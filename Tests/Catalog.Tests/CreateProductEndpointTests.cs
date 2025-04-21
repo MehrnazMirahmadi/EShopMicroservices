@@ -1,12 +1,4 @@
-﻿using Catalog.API.Models;
-using Catalog.API.Products.CreateProduct;
-using Marten;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Moq;
-using System.Net.Http.Json;
-
-
-namespace Catalog.Tests
+﻿namespace Catalog.Tests
 {
     public class CreateProductEndpointTests
     {

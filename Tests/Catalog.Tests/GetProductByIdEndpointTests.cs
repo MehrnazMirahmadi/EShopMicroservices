@@ -1,14 +1,4 @@
-﻿using Catalog.API.Models;
-using Catalog.API.Products.GetProductById;
-using FluentAssertions;
-using MediatR;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
-using Moq;
-using System.Net;
-using System.Net.Http.Json;
-
-public class GetProductByIdEndpointTests : IClassFixture<WebApplicationFactory<Program>>
+﻿public class GetProductByIdEndpointTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly WebApplicationFactory<Program> _factory;
 

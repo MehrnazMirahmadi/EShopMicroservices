@@ -1,11 +1,4 @@
-﻿using Catalog.API.Products.GetProducts;
-using FluentAssertions;
-using Microsoft.AspNetCore.Mvc.Testing;
-using Shouldly;
-using System.Net;
-using System.Net.Http.Json;
-
-namespace Catalog.Tests;
+﻿namespace Catalog.Tests;
 
 public class GetProductsEndPointTests : IClassFixture<WebApplicationFactory<Program>>
 {

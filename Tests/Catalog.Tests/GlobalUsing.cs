@@ -1,0 +1,16 @@
+﻿global using Catalog.API.Models;
+global using Catalog.API.Products.CreateProduct;
+global using Marten;
+global using Moq;
+global using Shouldly;
+global using Catalog.API.Products.GetProducts;
+global using FluentAssertions;
+global using Microsoft.AspNetCore.Mvc.Testing;
+global using System.Net;
+global using System.Net.Http.Json;
+global using Catalog.API.Exeptions;
+global using Catalog.API.Products.DeleteProduct;
+global using Catalog.API.Products.GetProductById;
+global using MediatR;
+global using Microsoft.Extensions.DependencyInjection;
+global using Catalog.API.Products.UpdateProduct;

@@ -1,0 +1,12 @@
+﻿global using Basket.API.Basket.DeleteBasket;
+global using Basket.API.Data;
+global using Basket.API.Models;
+global using FluentAssertions;
+global using FluentValidation.TestHelper;
+global using Moq;
+global using Basket.API.Basket.GetBasket;
+global using Microsoft.AspNetCore.Mvc.Testing;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.DependencyInjection.Extensions;
+global using Microsoft.VisualStudio.TestPlatform.TestHost;
+global using System.Net.Http.Json;
