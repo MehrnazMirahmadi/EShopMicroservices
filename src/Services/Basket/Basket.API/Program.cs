@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 // Add services to the container
+
 //Application Services
 var assembly = typeof(Program).Assembly;
 builder.Services.AddCarter();
