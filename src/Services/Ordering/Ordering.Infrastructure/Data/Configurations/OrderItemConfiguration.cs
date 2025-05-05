@@ -1,7 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Ordering.Domain.Models;
-using Ordering.Domain.ValueObjects;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Ordering.Infrastructure.Data.Configurations;
 public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
@@ -21,6 +18,6 @@ public class OrderItemConfiguration : IEntityTypeConfiguration<OrderItem>
         builder.Property(oi => oi.Quantity).IsRequired();
 
         builder.Property(oi => oi.Price).IsRequired();
-    
+
     }
 }
