@@ -1,6 +1,8 @@
-﻿global using Ordering.Domain.Models;
+﻿global using MediatR;
+global using FluentValidation;
+global using BuildingBlocks.Exceptions;
+global using Ordering.Domain.Models;
 global using Ordering.Domain.ValueObjects;
-global using MediatR;
 global using Microsoft.Extensions.Logging;
 global using Ordering.Domain.Events;
 global using Ordering.Application.Dtos;
